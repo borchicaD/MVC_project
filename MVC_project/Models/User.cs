@@ -24,5 +24,7 @@ namespace MVC_project.Models
         public string Country { get; set; }
         public string Email { get; set; }
         public string WebSite { get; set; }
+        public string Photo { get; set; }
+        public string AltTxt { get; set; }
     }
 }

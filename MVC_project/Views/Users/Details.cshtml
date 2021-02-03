@@ -82,9 +82,25 @@
             @Html.DisplayFor(model => model.WebSite)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.Photo)" alt="@Model.AltTxt">
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.AltTxt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltTxt)
+        </dd>*@
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-info"}) 
-    @Html.ActionLink("Back to Home page", "Index", null, new { @class="btn btn-default"})
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-info" })
+    @Html.ActionLink("Back to Home page", "Index", null, new { @class = "btn btn-default" })
 </p>

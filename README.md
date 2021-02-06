@@ -8,4 +8,4 @@ I aded two more columns in database, for Photo and AltText than saved changes, m
 I have made some custom error pages.
 I made all @Html.ActionLink <button>............aded bootstrap class like new {@class="btn btn-"}
 I made default route to my project in route.config.cs
-  I have changed default favicon for all pages.
+I have changed default favicon for all pages.

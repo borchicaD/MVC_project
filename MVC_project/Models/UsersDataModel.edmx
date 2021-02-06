@@ -19,8 +19,9 @@
           <Property Name="Country" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="30" />
           <Property Name="WebSite" Type="nvarchar" MaxLength="50" />
-          <Property Name="Photo" Type="nvarchar" MaxLength="100" />
-          <Property Name="AltTxt" Type="nvarchar" MaxLength="100" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AltTxt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
         </EntityType>
         <EntityContainer Name="ModelsStoreContainer">
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -43,8 +44,9 @@
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="WebSite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AltTxt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AltTxt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
         </EntityType>
         <EntityContainer Name="UsersEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -58,6 +60,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Models.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="AltTxt" ColumnName="AltTxt" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

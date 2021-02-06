@@ -1,4 +1,10 @@
-﻿@model IEnumerable<MVC_project.Models.User>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@*@model IEnumerable<MVC_project.Models.User>*@
+
+@model IPagedList<MVC_project.Models.User>
+
 
 @{
     ViewBag.Title = "Users";
@@ -7,47 +13,54 @@
 <h2>Users</h2>
 
 <p>
-    @Html.ActionLink("Enter new user", "Create",null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Enter new user", "Create", null, new { @class = "btn btn-success" })
 </p>
 <table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FullName)
+            @Html.DisplayNameFor(model => model.First().FullName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.First().Gender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Adress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.First().Age)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Country)
+            @Html.DisplayNameFor(model => model.First().DateOfBirth)
         </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.First().PhoneNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WebSite)
+            @Html.DisplayNameFor(model => model.First().Adress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().City)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.First().Country)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().WebSite)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FullName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.DateOfBirth)
@@ -71,11 +84,13 @@
             @Html.DisplayFor(modelItem => item.WebSite)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }, new { @class="btn btn-info"}) 
-            @Html.ActionLink("Details", "Details", new { id=item.ID }, new { @class = "btn btn-warning" }) 
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
         </td>
     </tr>
-}
+    }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page}))

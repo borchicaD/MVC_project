@@ -26,5 +26,6 @@ namespace MVC_project.Models
         public string WebSite { get; set; }
         public string Photo { get; set; }
         public string AltTxt { get; set; }
+        public Nullable<int> Age { get; set; }
     }
 }

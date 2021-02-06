@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_project.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MVC_project.Controllers
 {
@@ -15,9 +17,9 @@ namespace MVC_project.Controllers
         private UsersEntities db = new UsersEntities();
 
         // GET: Users
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Users.ToList());
+            return View(db.Users.ToList().ToPagedList(page ?? 1, 5));
         }
 
         // GET: Users/Details/5
@@ -25,12 +27,12 @@ namespace MVC_project.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             User user = db.Users.Find(id);
             if (user == null)
             {
-                return HttpNotFound();
+                return View("ErrorInApp");
             }
             return View(user);
         }
@@ -46,7 +48,7 @@ namespace MVC_project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FullName,Gender,DateOfBirth,PhoneNumber,Adress,City,Country,Email,WebSite")] User user)
+        public ActionResult Create([Bind(Include = "ID,FullName,Gender,DateOfBirth,PhoneNumber,Age,Adress,City,Country,Email,WebSite,Photo,AltTxt")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -63,12 +65,12 @@ namespace MVC_project.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             User user = db.Users.Find(id);
             if (user == null)
             {
-                return HttpNotFound();
+                return View("ErrorInApp");
             }
             return View(user);
         }
@@ -78,7 +80,7 @@ namespace MVC_project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FullName,Gender,DateOfBirth,PhoneNumber,Adress,City,Country,Email,WebSite")] User user)
+        public ActionResult Edit([Bind(Include = "ID,FullName,Gender,DateOfBirth,PhoneNumber,Age,Adress,City,Country,Email,WebSite,Photo,AltTxt")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -94,12 +96,12 @@ namespace MVC_project.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             User user = db.Users.Find(id);
             if (user == null)
             {
-                return HttpNotFound();
+                return View("ErrorInApp");
             }
             return View(user);
         }

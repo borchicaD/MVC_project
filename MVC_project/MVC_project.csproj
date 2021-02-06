@@ -180,7 +180,8 @@
       <DependentUpon>UsersDataModel.edmx</DependentUpon>
       <LastGenOutput>UsersDataModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Photos\favicon\faviconUsers.ico" />
+    <Content Include="Photo\favicon\faviconUsers.ico" />
+    <Content Include="Photo\UserImg\panda.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\UsersDataModel.edmx">
@@ -201,10 +202,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Photos\UserImg\1.jpg" />
-    <Content Include="Photos\UserImg\2.jpg" />
-    <Content Include="Photos\UserImg\3.jpg" />
-    <Content Include="Photos\UserImg\4.jpg" />
+    <Content Include="Photo\UserImg\1.jpg" />
+    <Content Include="Photo\UserImg\2.jpg" />
+    <Content Include="Photo\UserImg\3.jpg" />
+    <Content Include="Photo\UserImg\4.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

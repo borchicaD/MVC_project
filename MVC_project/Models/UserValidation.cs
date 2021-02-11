@@ -26,10 +26,11 @@ namespace MVC_project.Models
         [DisplayFormat(NullDisplayText = "Not specified.")]
         public string Gender { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Date of birth")]
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        //[Range(typeof(DateTime), "01/01/1920","01/01/2003")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode =true)]
+        //[Display(Name = "Date of birth")]
+        //public Nullable<System.DateTime> DateOfBirth { get; set; }
 
         [Required]
         [Display(Name = "Phone number")]
@@ -56,11 +57,6 @@ namespace MVC_project.Models
 
         [Range(18, 100)]
         public int? Age { get; set; }
-
-        
-        public string Photo { get; set; }
-
-        public string AltTxt { get; set; }
 
     }
 }

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,9 +20,9 @@ namespace MVC_project.Controllers
         private UsersEntities db = new UsersEntities();
 
         // GET: Users
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, int pageSize = 5)
         {
-            return View(db.Users.ToList().ToPagedList(page ?? 1, 5));
+            return View(db.Users.ToList().ToPagedList(page ?? 1, pageSize));
         }
 
         // GET: Users/Details/5
@@ -48,7 +51,7 @@ namespace MVC_project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FullName,Gender,DateOfBirth,PhoneNumber,Age,Adress,City,Country,Email,WebSite,Photo,AltTxt")] User user)
+        public ActionResult Create([Bind(Include = "ID,FullName,Gender,PhoneNumber,Age,Adress,City,Country,Email,WebSite,Photo,AltTxt")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +62,26 @@ namespace MVC_project.Controllers
 
             return View(user);
         }
+
+        [HttpPost]
+        public ActionResult Add(User image)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(image.UserImg.FileName);
+            string extension = Path.GetExtension(image.UserImg.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            image.Photo = "~/Photo/UserImg/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Photo/UserImg/"), fileName);
+            image.UserImg.SaveAs(fileName);
+            using (UsersEntities db = new UsersEntities())
+            {
+                db.Users.Add(image);
+                db.SaveChanges();
+            }
+            ModelState.Clear();
+            return View(image);
+        }
+
+
 
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
@@ -80,7 +103,7 @@ namespace MVC_project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FullName,Gender,DateOfBirth,PhoneNumber,Age,Adress,City,Country,Email,WebSite,Photo,AltTxt")] User user)
+        public ActionResult Edit([Bind(Include = "ID,FullName,Gender,PhoneNumber,Age,Adress,City,Country,Email,WebSite,Photo,AltTxt")] User user)
         {
             if (ModelState.IsValid)
             {

@@ -17,7 +17,7 @@ namespace MVC_project.Models
 
     public class UsersMetaData
     {
-        [StringLength(50, MinimumLength = 5)]
+        [StringLength(50, MinimumLength = 3)]
         [Required]
         [RegularExpression(@"^(([A-za-z]+[\s]{1}[A-Za-z]+))$", ErrorMessage = "Please enter valid Full Name")]
         [Display(Name = "Full name")]

@@ -77,8 +77,8 @@ namespace MVC_project.Controllers
                 db.Users.Add(image);
                 db.SaveChanges();
             }
-            ModelState.Clear();
-            return View(image);
+            //ModelState.Clear();
+            return View("Index");
         }
 
 

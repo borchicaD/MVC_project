@@ -10,7 +10,7 @@
 </div>
 
 
-@using (Html.BeginForm("Add", "Users", FormMethod.Post, new { enctype = "multipart/form-data"}))
+@using (Html.BeginForm("Create", "Users", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     
@@ -104,7 +104,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Create" formaction="Add" class="btn btn-default" />
         </div>
     </div>
 </div>

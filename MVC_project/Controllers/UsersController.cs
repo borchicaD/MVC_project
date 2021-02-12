@@ -78,7 +78,7 @@ namespace MVC_project.Controllers
                 db.SaveChanges();
             }
             //ModelState.Clear();
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
 

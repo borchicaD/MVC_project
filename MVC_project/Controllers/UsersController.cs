@@ -64,23 +64,26 @@ namespace MVC_project.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(User image)
+        public ActionResult Add(User userImage)
         {
-            string fileName = Path.GetFileNameWithoutExtension(image.UserImg.FileName);
-            string extension = Path.GetExtension(image.UserImg.FileName);
-            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            image.Photo = "~/Photo/UserImg/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/Photo/UserImg/"), fileName);
-            image.UserImg.SaveAs(fileName);
-            using (UsersEntities db = new UsersEntities())
-            {
-                db.Users.Add(image);
-                db.SaveChanges();
-            }
-            //ModelState.Clear();
-            return RedirectToAction("Index");
-        }
+                string fileName = Path.GetFileNameWithoutExtension(userImage.UserImg.FileName);
+                string extension = Path.GetExtension(userImage.UserImg.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                userImage.Photo = "~/Photo/UserImg/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Photo/UserImg/"), fileName);
+                userImage.UserImg.SaveAs(fileName);
 
+                using (UsersEntities db = new UsersEntities())
+
+                {
+                    db.Users.Add(userImage);
+                    db.SaveChanges();
+                }
+                //ModelState.Clear();
+                return RedirectToAction("Index");
+      
+         }
+        
 
 
         // GET: Users/Edit/5

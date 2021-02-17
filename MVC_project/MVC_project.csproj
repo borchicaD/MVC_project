@@ -224,6 +224,7 @@
     </Content>
     <Content Include="Photo\favicon\favicon.ico" />
     <Content Include="Photo\UserImg\panda.jpg" />
+    <Content Include="Photo\UserImg\userImg.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\UsersDataModel.edmx">

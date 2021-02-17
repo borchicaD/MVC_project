@@ -98,7 +98,7 @@
         <div class="col-md-10">
             @*@Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-info" })*@
-            <input type="file" name="UserImg" class="form-control">
+            <input type="file" name="UserImg" class="form-control" required>
         </div>
     </div>
 
@@ -110,8 +110,3 @@
 </div>
 }
 
-
-
-@*@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}*@

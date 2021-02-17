@@ -10,4 +10,4 @@ I made all @Html.ActionLink <button>............aded bootstrap class like new {@
 I made default route to my project in route.config.cs
 I have changed default favicon for all pages.
 I added paging, it shows 5 rows from database in one page.  
-I added <browse> for user Image, it' is shown in Details view, and path is saved in database, uploaded image is saved in ~/Photo/UserImg/ folder.  
+I added upload method for user Image, it' is shown in Details view, and path is saved in database, uploaded image is saved in ~/Photo/UserImg/ folder.  
